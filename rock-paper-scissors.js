@@ -65,6 +65,41 @@ function playRound(playerInput, computerInput) {
 
 }
 
+function game(numberOfGames) {
+    let playerScore = 0;
+    let computerScore = 0;
+    let ties = 0;
+
+    for (let x = 0; x < numberOfGames; x++) {
+        let playerInput = window.prompt("Rock, Paper, or Scissors");
+        const computerSelection = computerPlay();
+        const response = playRound(playerInput, computerSelection);
+        console.log(response);
+        
+        if (response.slice(0,9) === "You Loose!"){
+            computerScore++;
+        }
+        else if (response.slice(0,7) === "You Win!"){
+            playerScore++;
+        }
+        else {
+            ties++;
+        }
+    }
+
+    const finalScore = "You played: " + numberOfGames + " Final Score: \nPlayer: " + playerScore + " Computer: " + computerScore + " Ties:  " + ties;
+    if(playerScore > computerScore) {
+        console.log("Congratulations, you WIN!!! " + finalScore );
+    }
+    else if(computerScore > playerScore) {
+        console.log("Sorry, you LOOSE! " + finalScore );
+    }
+    else {
+        console.log("The game was a tie! Play again!" + finalScore );
+    }
+
+}
+
 const playerInput = "rock";
 const computerSelection = computerPlay();
 console.log(playRound(playerInput, computerSelection));
