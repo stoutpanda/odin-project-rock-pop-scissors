@@ -37,24 +37,24 @@ function playRound(playerInput, computerInput) {
 
    //check players selection, use position within array as value, subtract and modulous. 0 should be tie, odds loss and evens wins. 
 
-
-   // Invalid test case: 
-   //You Loose! You chose Paper & the Computer chose: Rock
    const playersChoice = playerSelection(playerInput);
    const playersValue = selection.indexOf(playersChoice);
    const computersValue = selection.indexOf(computerInput);
    let response = "You chose " + playersChoice + " & the Computer chose: " + computerInput;
    
    const result = ((playersValue - computersValue) % modNum);
-   const resultIsEven = ((result % 2) === 0) ? true : false; 
 
-   console.log(result)
+
+//    //debug
+//    console.log(playersChoice + " " + playersValue);
+//    console.log(computerInput + " " + computersValue);
+//    console.log(result);
 
    if(result === 0 ) {
         response = "You Tied! " + response;
    
    }
-   else if (resultIsEven) {
+   else if (result === 1) {
        response = "You Win! " + response;
    }
    else {
@@ -64,4 +64,8 @@ function playRound(playerInput, computerInput) {
    return response;
 
 }
+
+const playerInput = "rock";
+const computerSelection = computerPlay();
+console.log(playRound(playerInput, computerSelection));
 
