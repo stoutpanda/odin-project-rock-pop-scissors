@@ -2,7 +2,7 @@
 
 const selection = ["Rock", "Paper", "Scissors"];
 const invalidInput = "Not A Valid Selection";
-const modNum = selection.length; 
+const modNum = selection.length;
 
 
 
@@ -35,33 +35,33 @@ function playerSelection(playerInput) {
 
 function playRound(playerInput, computerInput) {
 
-   //check players selection, use position within array as value, subtract and modulous. 0 should be tie, odds loss and evens wins. 
+    //check players selection, use position within array as value, subtract and modulous. 0 should be tie, odds loss and evens wins. 
 
-   const playersChoice = playerSelection(playerInput);
-   const playersValue = selection.indexOf(playersChoice);
-   const computersValue = selection.indexOf(computerInput);
-   let response = "You chose " + playersChoice + " & the Computer chose: " + computerInput;
-   
-   const result = ((playersValue - computersValue) % modNum);
+    const playersChoice = playerSelection(playerInput);
+    const playersValue = selection.indexOf(playersChoice);
+    const computersValue = selection.indexOf(computerInput);
+    let response = "You chose " + playersChoice + " & the Computer chose: " + computerInput;
+
+    const result = ((playersValue - computersValue) % modNum);
 
 
-//    //debug
-//    console.log(playersChoice + " " + playersValue);
-//    console.log(computerInput + " " + computersValue);
-//    console.log(result);
+    //    //debug
+    //    console.log(playersChoice + " " + playersValue);
+    //    console.log(computerInput + " " + computersValue);
+    //    console.log(result);
 
-   if(result === 0 ) {
+    if (result === 0) {
         response = "You Tied! " + response;
-   
-   }
-   else if (result === 1) {
-       response = "You Win! " + response;
-   }
-   else {
-       response = "You Loose! " + response; 
-   }
 
-   return response;
+    }
+    else if (result === 1) {
+        response = "You Win! " + response;
+    }
+    else {
+        response = "You Loose! " + response;
+    }
+
+    return response;
 
 }
 
