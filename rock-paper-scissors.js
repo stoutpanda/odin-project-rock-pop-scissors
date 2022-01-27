@@ -75,11 +75,11 @@ function game(numberOfGames) {
         let computerSelection = computerPlay();
         const response = playRound(playerInput, computerSelection);
         console.log(response);
-        
-        if (response.slice(0,10) === "You Loose!"){
+
+        if (response.slice(0, 10) === "You Loose!") {
             computerScore++;
         }
-        else if (response.slice(0,8) === "You Win!"){
+        else if (response.slice(0, 8) === "You Win!") {
             playerScore++;
         }
         else {
@@ -88,14 +88,14 @@ function game(numberOfGames) {
     }
 
     const finalScore = "You played: " + numberOfGames + " Final Score: \nPlayer: " + playerScore + " Computer: " + computerScore + " Ties:  " + ties;
-    if(playerScore > computerScore) {
-        console.log("Congratulations, you WIN!!! " + finalScore );
+    if (playerScore > computerScore) {
+        console.log("Congratulations, you WIN!!! " + finalScore);
     }
-    else if(computerScore > playerScore) {
-        console.log("Sorry, you LOOSE! " + finalScore );
+    else if (computerScore > playerScore) {
+        console.log("Sorry, you LOOSE! " + finalScore);
     }
     else {
-        console.log("The game was a tie! Play again!" + finalScore );
+        console.log("The game was a tie! Play again!" + finalScore);
     }
 
 }
