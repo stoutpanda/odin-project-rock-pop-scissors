@@ -72,14 +72,14 @@ function game(numberOfGames) {
 
     for (let x = 0; x < numberOfGames; x++) {
         let playerInput = window.prompt("Rock, Paper, or Scissors");
-        const computerSelection = computerPlay();
+        let computerSelection = computerPlay();
         const response = playRound(playerInput, computerSelection);
         console.log(response);
         
-        if (response.slice(0,9) === "You Loose!"){
+        if (response.slice(0,10) === "You Loose!"){
             computerScore++;
         }
-        else if (response.slice(0,7) === "You Win!"){
+        else if (response.slice(0,8) === "You Win!"){
             playerScore++;
         }
         else {
