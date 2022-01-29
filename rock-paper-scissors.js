@@ -101,3 +101,14 @@ function game(numberOfGames) {
 }
 
 
+//Button Listners
+let rockBtn = document.querySelector("#rock");
+    rockBtn.addEventListener("click", playRound("rock"));
+let paperBtn = document.querySelector("#paper");
+    paperBtn.addEventListener("click", playRound("paper"));
+let scissorsBtn = document.querySelector("#scissors");
+    scissorsBtn.addEventListener("click", playRound("scissors"));
+
+
+//Display result
+let resultDiv = document.querySelector("#result");
