@@ -100,7 +100,4 @@ function game(numberOfGames) {
 
 }
 
-const playerInput = "rock";
-const computerSelection = computerPlay();
-console.log(playRound(playerInput, computerSelection));
 
