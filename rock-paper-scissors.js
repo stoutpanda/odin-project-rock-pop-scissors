@@ -45,7 +45,7 @@ function playRound(playerInput) {
     const playersChoice = playerSelection(playerInput);
     const playersValue = selection.indexOf(playersChoice);
     const computersValue = selection.indexOf(computerInput);
-    let response = "You chose " + playersChoice + " & the Computer chose: " + computerInput;
+    let response = "You chose " + playersChoice + " & the Computer chose: " + computerInput; 
 
     const result = ((playersValue - computersValue) % modNum);
 
@@ -69,15 +69,18 @@ function playRound(playerInput) {
         computerScore++;
     }
 
-   roundResult(response);
+
+   let score_response = "\nCurrent Score: Player: " + playerScore + " Computer Score: " + computerScore + " Ties: " + ties;
+   roundResult(response, score_response);
 
 }
 
-function roundResult(response) {
+
+function roundResult(response, score_response) {
     
     let roundResult = document.createElement("p");
     roundResult.classList.add('score', 'roundResult');
-    roundResult.textContent = response;
+    roundResult.textContent = response + score_response;
     resultDiv.appendChild(roundResult);
 }
 
