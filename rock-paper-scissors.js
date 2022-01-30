@@ -33,10 +33,10 @@ function playerSelection(playerInput) {
 
 }
 
-function playRound(playerInput, computerInput) {
+function playRound(playerInput) {
 
     //check players selection, use position within array as value, subtract and modulous. 0 should be tie, odds loss and evens wins. 
-
+    const computerInput = computerPlay();
     const playersChoice = playerSelection(playerInput);
     const playersValue = selection.indexOf(playersChoice);
     const computersValue = selection.indexOf(computerInput);
@@ -102,13 +102,13 @@ function game(numberOfGames) {
 
 
 //Button Listners
-let rockBtn = document.querySelector("#rock");
-    rockBtn.addEventListener("click", playRound("rock"));
-let paperBtn = document.querySelector("#paper");
-    paperBtn.addEventListener("click", playRound("paper"));
-let scissorsBtn = document.querySelector("#scissors");
-    scissorsBtn.addEventListener("click", playRound("scissors"));
+const btns = document.querySelectorAll('button.rps_button');
 
+btns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+        playRound(btn.id.toString())
+    })
+});
 
 //Display result
 let resultDiv = document.querySelector("#result");
