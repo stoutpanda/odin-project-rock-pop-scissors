@@ -70,7 +70,7 @@ function playRound(playerInput) {
     }
 
 
-   let score_response = "\nCurrent Score: Player: " + playerScore + " Computer Score: " + computerScore + " Ties: " + ties;
+   let score_response = " Current Game Score: Player: " + playerScore + " Computer Score: " + computerScore + " Ties: " + ties;
    roundResult(response, score_response);
 
 }
@@ -78,10 +78,10 @@ function playRound(playerInput) {
 
 function roundResult(response, score_response) {
     
-    let roundResult = document.createElement("p");
-    roundResult.classList.add('score', 'roundResult');
-    roundResult.textContent = response + score_response;
-    resultDiv.appendChild(roundResult);
+    let roundResult = document.querySelector(".roundResult");
+    let scoreResult = document.querySelector(".score");
+    roundResult.textContent = "Round Results: " + response;
+    scoreResult.textContent = score_response;
 }
 
 function checkScore() {
