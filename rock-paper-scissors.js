@@ -8,6 +8,7 @@ const modNum = selection.length;
 let playerScore = 0;
 let computerScore = 0;
 let ties = 0;
+let roundCount = 0;
 //results Div
 let resultDiv = document.querySelector(".results");
 
@@ -45,7 +46,7 @@ function playRound(playerInput) {
     const playersChoice = playerSelection(playerInput);
     const playersValue = selection.indexOf(playersChoice);
     const computersValue = selection.indexOf(computerInput);
-    let response = "You chose " + playersChoice + " & the Computer chose: " + computerInput; 
+    let response = "You chose " + playersChoice + " & the Computer chose: " + computerInput;
 
     const result = ((playersValue - computersValue) % modNum);
 
@@ -54,7 +55,7 @@ function playRound(playerInput) {
     //    console.log(playersChoice + " " + playersValue);
     //    console.log(computerInput + " " + computersValue);
     //    console.log(result);
-
+    roundCount++;
     if (result === 0) {
         response = "You Tied! " + response;
         ties++;
@@ -70,14 +71,15 @@ function playRound(playerInput) {
     }
 
 
-   let score_response = " Current Game Score: Player: " + playerScore + " Computer Score: " + computerScore + " Ties: " + ties;
-   roundResult(response, score_response);
+    let score_response = " Current Game Score: Player: " + playerScore + " Computer Score: " + computerScore + " Ties: " + ties;
+    roundResult(response, score_response);
+    checkScore();
 
 }
 
 
 function roundResult(response, score_response) {
-    
+
     let roundResult = document.querySelector(".roundResult");
     let scoreResult = document.querySelector(".score");
     roundResult.textContent = "Round Results: " + response;
@@ -86,18 +88,28 @@ function roundResult(response, score_response) {
 
 function checkScore() {
 
+    let finalScoreP = document.createElement("p");
+    finalScoreP.classList.add("finalScore");
 
-    const finalScore = "You played: " + numberOfGames + " Final Score: \nPlayer: " + playerScore + " Computer: " + computerScore + " Ties:  " + ties;
-    if (playerScore > computerScore) {
-        console.log("Congratulations, you WIN!!! " + finalScore);
-    }
-    else if (computerScore > playerScore) {
-        console.log("Sorry, you LOOSE! " + finalScore);
-    }
-    else {
-        console.log("The game was a tie! Play again!" + finalScore);
-    }
+    if (playerScore === 5 || computerScore === 5) {
 
+        const finalScore = "You played: " + roundCount + " Final Score: \nPlayer: " + playerScore + " Computer: " + computerScore + " Ties:  " + ties;
+        if (playerScore > computerScore) {
+            finalScoreP.classList.add("playerWins");
+            finalScoreP.textContent = "Congratulations, you WIN!!! " + finalScore;
+            resultDiv.appendChild(finalScoreP);
+
+        }
+        else if (computerScore > playerScore) {
+            finalScoreP.classList.add("computerWins");
+            finalScoreP.textContent = "Sorry, you LOOSE! " + finalScore;
+            resultDiv.appendChild(finalScoreP);
+
+        }
+        else {
+            console.log("The game was a tie! Play again!" + finalScore);
+        }
+    }
 }
 
 
