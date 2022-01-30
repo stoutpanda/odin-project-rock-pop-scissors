@@ -4,7 +4,12 @@ const selection = ["Rock", "Paper", "Scissors"];
 const invalidInput = "Not A Valid Selection";
 const modNum = selection.length;
 
-
+//Scores
+let playerScore = 0;
+let computerScore = 0;
+let ties = 0;
+//results Div
+let resultDiv = document.querySelector(".results");
 
 
 //Computer Selection
@@ -52,40 +57,32 @@ function playRound(playerInput) {
 
     if (result === 0) {
         response = "You Tied! " + response;
+        ties++;
 
     }
     else if (result === 1) {
         response = "You Win! " + response;
+        playerScore++;
     }
     else {
         response = "You Loose! " + response;
+        computerScore++;
     }
 
-    return response;
+   roundResult(response);
 
 }
 
-function game(numberOfGames) {
-    let playerScore = 0;
-    let computerScore = 0;
-    let ties = 0;
+function roundResult(response) {
+    
+    let roundResult = document.createElement("p");
+    roundResult.classList.add('score', 'roundResult');
+    roundResult.textContent = response;
+    resultDiv.appendChild(roundResult);
+}
 
-    for (let x = 0; x < numberOfGames; x++) {
-        let playerInput = window.prompt("Rock, Paper, or Scissors");
-        let computerSelection = computerPlay();
-        const response = playRound(playerInput, computerSelection);
-        console.log(response);
+function checkScore() {
 
-        if (response.slice(0, 10) === "You Loose!") {
-            computerScore++;
-        }
-        else if (response.slice(0, 8) === "You Win!") {
-            playerScore++;
-        }
-        else {
-            ties++;
-        }
-    }
 
     const finalScore = "You played: " + numberOfGames + " Final Score: \nPlayer: " + playerScore + " Computer: " + computerScore + " Ties:  " + ties;
     if (playerScore > computerScore) {
@@ -101,6 +98,8 @@ function game(numberOfGames) {
 }
 
 
+// HTML Game Logic Below.
+
 //Button Listners
 const btns = document.querySelectorAll('button.rps_button');
 
@@ -110,5 +109,3 @@ btns.forEach((btn) => {
     })
 });
 
-//Display result
-let resultDiv = document.querySelector("#result");
