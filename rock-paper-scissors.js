@@ -91,25 +91,41 @@ function checkScore() {
     let finalScoreP = document.createElement("p");
     finalScoreP.classList.add("finalScore");
 
-    if (playerScore === 5 || computerScore === 5) {
+    if (playerScore == 5 || computerScore == 5) {
 
         const finalScore = "You played: " + roundCount + " Final Score: \nPlayer: " + playerScore + " Computer: " + computerScore + " Ties:  " + ties;
         if (playerScore > computerScore) {
             finalScoreP.classList.add("playerWins");
             finalScoreP.textContent = "Congratulations, you WIN!!! " + finalScore;
-            resultDiv.appendChild(finalScoreP);
+            gameEnd(finalScoreP);
 
         }
         else if (computerScore > playerScore) {
             finalScoreP.classList.add("computerWins");
             finalScoreP.textContent = "Sorry, you LOOSE! " + finalScore;
-            resultDiv.appendChild(finalScoreP);
+            gameEnd(finalScoreP);
 
         }
         else {
             console.log("The game was a tie! Play again!" + finalScore);
         }
     }
+}
+
+function gameEnd(finalScoreP) {
+    btns.forEach((btn) => btn.remove());
+    resultDiv.appendChild(finalScoreP);
+    resetBtn = document.createElement('button');
+    resetBtn.textContent = "Click here to reset game";
+    resetBtn.addEventListener('click', resetGame);
+    resultDiv.appendChild(resetBtn);
+
+}
+
+function resetGame() {
+
+    //for now reloading game, made this function so you could reset the state of the game instead if wanted.
+    location.reload();
 }
 
 
